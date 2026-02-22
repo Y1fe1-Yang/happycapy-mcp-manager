@@ -28,9 +28,46 @@ This skill helps you configure multiple MCP servers globally:
 - 📝 Read and update files
 - 📊 View commits and history
 
+## Installation
+
+**IMPORTANT:** You must install this skill before you can use it.
+
+### Method 1: One-line Install (Recommended)
+
+```bash
+git clone https://github.com/Y1fe1-Yang/happycapy-mcp-manager.git /home/node/.claude/skills/happycapy-mcp-manager
+```
+
+### Method 2: Manual Install
+
+```bash
+# Clone the repository
+cd /tmp
+git clone https://github.com/Y1fe1-Yang/happycapy-mcp-manager.git
+
+# Create skills directory if it doesn't exist
+mkdir -p /home/node/.claude/skills
+
+# Copy to skills directory
+cp -r happycapy-mcp-manager /home/node/.claude/skills/
+
+# Verify installation
+ls /home/node/.claude/skills/happycapy-mcp-manager
+```
+
+### Verify Installation
+
+After installation, the skill should appear in your skill list. You can check by asking Claude:
+
+```
+What skills are available?
+```
+
+Or use the `/find-skills` command to search for it.
+
 ## Usage
 
-Invoke this skill when you need to set up any MCP server:
+Once installed, invoke this skill:
 
 ```
 /happycapy-mcp-manager

@@ -1,3 +1,8 @@
+---
+name: happycapy-mcp-manager
+description: Configure multiple MCP servers (Composio, Memory, GitHub Copilot) globally in HappyCapy environment at /home/node/.claude.json. Use when users want to install MCP servers, access external apps (Gmail, Slack, GitHub, Notion), set up knowledge graph storage, configure OAuth integrations, or ask how to connect Claude to external services. Triggers include "install mcp", "configure composio", "setup memory mcp", "access gmail", "github copilot mcp", or any mention of connecting Claude to third-party apps.
+---
+
 # MCP Configuration Manager for HappyCapy Environment
 
 You are an expert assistant for installing and configuring Model Context Protocol (MCP) servers in the HappyCapy Claude Code environment.
@@ -29,14 +34,6 @@ This skill helps users configure multiple MCP servers globally:
 - Remote HTTP MCP from GitHub
 
 ### 4. Clean up conflicting configurations
-
-## When to Use This Skill
-
-Use this skill when users:
-- Want to access external apps (Gmail, Slack, etc.) from Claude Code
-- Ask "how do I configure Composio MCP"
-- Need to integrate third-party services with Claude
-- Want to read emails, send messages, or interact with SaaS tools
 
 ## Prerequisites Check
 
@@ -253,46 +250,6 @@ Get contents of src/main.ts in username/repo
 
 ---
 
-### MCP 4: Custom MCPs (Extensible)
-
-This skill can be extended to support additional MCPs. Common ones:
-
-**Brave Search MCP:**
-```json
-{
-  "brave-search": {
-    "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "@modelcontextprotocol/server-brave-search"],
-    "env": {
-      "BRAVE_API_KEY": "your_key"
-    }
-  }
-}
-```
-
-**Filesystem MCP:**
-```json
-{
-  "filesystem": {
-    "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/allowed/path"]
-  }
-}
-```
-
-**Puppeteer MCP:**
-```json
-{
-  "puppeteer": {
-    "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-  }
-}
-```
-
 ## Authentication Modes
 
 ### Auto-Managed (Recommended)
@@ -374,36 +331,6 @@ Once configured and session restarted, users can:
 2. Generate new API key
 3. Update `~/.claude.json` with new key
 
-## Architecture Overview
-
-### HTTP Mode Data Flow
-```
-Claude Code
-    ↓ HTTPS
-Composio MCP Server (backend.composio.dev)
-    ↓ OAuth/API
-External Apps (Gmail, Slack, GitHub, etc.)
-```
-
-### stdio Mode Data Flow
-```
-Claude Code
-    ↓ stdio
-npx @composio/mcp (local Node.js process)
-    ↓ HTTPS
-Composio MCP Server (backend.composio.dev)
-    ↓ OAuth/API
-External Apps
-```
-
-## Best Practices
-
-1. **Use HTTP mode** - More reliable than stdio for production
-2. **Enable auto-managed auth** - Better user experience
-3. **Limit toolkits** - Only enable apps you need for security
-4. **One global config** - Use `~/.claude.json`, not project-level configs
-5. **Regular key rotation** - Update API keys periodically
-
 ## Important Notes for HappyCapy Environment
 
 - **Configuration file (FIXED):** `/home/node/.claude.json`
@@ -462,15 +389,6 @@ External Apps
 ```
 
 **IMPORTANT:** All three MCPs can coexist. You can install all, some, or just one based on your needs.
-
-## Success Criteria
-
-Installation is successful when:
-1. ✅ `~/.claude.json` contains valid Composio MCP configuration
-2. ✅ After restart, MCP tools are available (check with ToolSearch)
-3. ✅ User can request app operations (e.g., "read Gmail")
-4. ✅ OAuth flow completes successfully (if auto-managed)
-5. ✅ External API calls work (emails sent, messages posted, etc.)
 
 ## Step-by-Step Installation Flow
 
@@ -570,4 +488,4 @@ Search for "TODO" in username/repo
 
 ## Summary
 
-This skill automates the complete Composio MCP installation process, from credential collection to configuration verification, ensuring users can access 1000+ apps through Claude Code with minimal friction.
+This skill automates the complete MCP installation process for Composio, Memory, and GitHub Copilot servers, from credential collection to configuration verification, ensuring users can access 1000+ apps, persistent knowledge storage, and GitHub operations through Claude Code with minimal friction.
