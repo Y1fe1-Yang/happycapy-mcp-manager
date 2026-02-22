@@ -33,7 +33,7 @@ This skill helps you configure multiple MCP servers globally:
 Invoke this skill when you need to set up any MCP server:
 
 ```
-/composio-mcp-installer
+/happycapy-mcp-manager
 ```
 
 Or use natural language triggers:

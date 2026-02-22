@@ -1,5 +1,5 @@
 {
-  "name": "composio-mcp-installer",
+  "name": "happycapy-mcp-manager",
   "version": "2.0.0",
   "description": "Configure multiple MCP servers (Composio, Memory, GitHub Copilot) globally in HappyCapy environment at /home/node/.claude.json",
   "trigger": [
